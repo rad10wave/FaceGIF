@@ -44,31 +44,48 @@ video.addEventListener('play',()=>{
           );
           //document.getElementById("emotion").innerText = `Emotion - ${emotion[0]}`;
           //here goes the GIFs
-          $.get({
-            url: "https://api.giphy.com/v1/gifs/search?q="+emotion[0]+"+face&api_key=p9274pzliNt4B4dfBY19BrUyZerDtC82&rating=pg",
-            success: function(result) {
-              var data = result.data;
-              var output = "";
-            //   for (var index in data){
-                for (var index = 0; index < 8; index++){
-                  var gifObject = data[index];
-                var gifURL = gifObject.images.original.url;
-                console.log(gifURL);
-                output += "<img id='loadedImg' width='200px' src='"+gifURL+"'/>";
-              }
-              var x = document.getElementById("loading");
-              if(x){
-             
-        x.style.display = "none";
-      }
-              $("#gif").html(output);
-            },
-            error: function(error) {
-              var x = document.getElementById("loading");
-        x.style.display = "block";
-              console.log(error);
+          let giphyURL= "https://api.giphy.com/v1/gifs/search?q="+emotion[0]+"+face&api_key=p9274pzliNt4B4dfBY19BrUyZerDtC82&rating=pg"
+          fetch(giphyAPI)
+                .then(response => {
+                    return response.json();
+                })
+                .then(json => {
+                  console.log(json)
+                    console.log(json.data[0].images.original.url);
+
+                    var data = result.data;
+                    var output = "";
+                  //   for (var index in data){
+                      for (var index = 0; index < 8; index++){
+                        var gifObject = data[index];
+                      var gifURL = gifObject.images.original.url;
+                      console.log(gifURL);
+                      output += "<img id='loadedImg' width='200px' src='"+gifURL+"'/>";
+                    }
+                    var x = document.getElementById("loading");
+                    if(x){
+                   
+              x.style.display = "none";
             }
-          });
+            else{
+              x.style.display = "block";
+            }
+                    $("#gif").html(output);
+                })
+
+                .catch(err => console.log(err));
+        //   //older_way
+        //   $.ajax({
+        //     url: "https://api.giphy.com/v1/gifs/search?q="+emotion[0]+"+face&api_key=p9274pzliNt4B4dfBY19BrUyZerDtC82&rating=pg",
+        //     success: function(result) {
+             
+        //     },
+        //     error: function(error) {
+        //       var x = document.getElementById("loading");
+        // x.style.display = "block";
+        //       console.log(error);
+        //     }
+        //   });
           
       }
       // else{
