@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@800&display=swap" rel="stylesheet"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>FaceGIF</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="intro">FaceGIF- search GIFS with facial expression</div>
+    <div class="content">
+      <div class="container">
+        <video id="video" height="300" width="350"  autoplay muted></video>
+      </div>
+   
+       <div id="gif"><img id="loading" src="load.png"></div>
+  </div>
+   <script defer src="./js/face-api.min.js"></script>
+    <script defer src="./js/main.js"></script>
+  </body>
+</html>
