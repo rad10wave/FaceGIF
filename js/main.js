@@ -45,7 +45,7 @@ video.addEventListener('play',()=>{
           //document.getElementById("emotion").innerText = `Emotion - ${emotion[0]}`;
           //here goes the GIFs
           let giphyURL= "https://api.giphy.com/v1/gifs/search?q="+emotion[0]+"+face&api_key=p9274pzliNt4B4dfBY19BrUyZerDtC82&rating=pg"
-          fetch(giphyAPI)
+          fetch(giphyURL)
                 .then(response => {
                     return response.json();
                 })
